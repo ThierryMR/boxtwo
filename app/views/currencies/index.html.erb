@@ -1,2 +1,59 @@
-<h1>Currencies#index</h1>
-<p>Find me in app/views/currencies/index.html.erb</p>
+<h1>Currencies</h1>
+<h2>Modifications at, every one hour</h2>
+
+
+<table class="table"> <caption>Optional table caption.</caption>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Symbol</th>
+      <th>Price</th>
+      <th>circulating_supply</th>
+      <th>total_supply</th>
+      <th>max_supply</th>
+      <th>volume_24h</th>
+      <th>market_cap</th>
+      <th>%change_1h</th>
+      <th>%change_24h</th>
+      <th>%change_7d</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @currencies.each do |c| %>
+    <tr>
+      <th scope="rank"><%=c.rank  %>  </th>
+
+    <td> <%=c.name  %></td>
+    <td> <%=c.symbol  %> </td>
+    <td> <%=number_to_currency(c.current_price, :precision => 2) %> </td>
+    <td> <%=number_with_precision(c.circulating_supply, precision:0, delimiter: ",")  %> </td>
+
+    <td> <%=number_with_precision(c.total_supply, precision: 0, delimiter: ",")  %> </td>
+
+    <td> <%= c.max_supply.zero? ? "Not applicable" : number_with_precision(c.max_supply, precision: 0, delimiter: "," )  %> </td>
+
+    <td> <%=number_with_precision(c.volume_24h, precision: 0, delimiter: ",")  %> </td>
+
+    <td> <%=number_to_currency(c.market_cap, :precision => 2 )  %> </td>
+
+    <td> <%=number_to_percentage(c.percent_change_1h, :precision => 2) %></td>
+
+    <td> <%=number_to_percentage(c.percent_change_24h, :precision => 2) %></td>
+    <td> <%=number_to_percentage(c.percent_change_7d, :precision => 2)%></td>
+
+  <% end %>
+    </tr>
+
+   </tbody>
+ </table>
+
+
+
+
+
+
+
+
+
+

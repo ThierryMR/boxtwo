@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :users, only: [:show] do #totally independent
+    # member do
     resources :wallets #nested in users
+    # end
   end
   resources :currencies, only: [:index, :show] #totally independent
   resources :offers, only: [:show, :index] #MAYBE INDEPENDENT

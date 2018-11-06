@@ -4,8 +4,8 @@ class UserPolicy < ApplicationPolicy
       scope.all
     end
 
-    def show
+  end
+  def show?
       true
     end
-  end
 end

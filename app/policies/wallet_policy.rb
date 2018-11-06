@@ -6,10 +6,19 @@ class WalletPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    record.user == user
   end
 
   def show?
-    true
+    record.user == user
   end
+
+  def new?
+    create?
+  end
+
+  def create?
+   record.user == user
+  end
+
 end

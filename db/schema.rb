@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_05_210439) do
+ActiveRecord::Schema.define(version: 2018_11_06_164207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 2018_11_05_210439) do
     t.float "historical_trans_volume"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "symbol"
+    t.string "website_slug"
+    t.integer "rank"
+    t.float "circulating_supply"
+    t.float "total_supply"
+    t.float "max_supply"
+    t.float "volume_24h"
+    t.float "market_cap"
+    t.float "percent_change_1h"
+    t.float "percent_change_24h"
+    t.float "percent_change_7d"
   end
 
   create_table "offers", force: :cascade do |t|

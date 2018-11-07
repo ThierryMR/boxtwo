@@ -1,59 +1,61 @@
 <div class="navbar-wagon">
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png", height: 50 %>
-  <% end %>
+ <!-- Logo -->
+ <%= link_to root_path, class: "navbar-wagon-brand" do %>
+   <%= image_tag "vault.png", height: 50 %>
+ <% end %>
 
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <%#= link_to "Nossos Clientes", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to "Nossos Clientes", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-    <% if user_signed_in? %>
+ <!-- Right Navigation -->
+ <div class="navbar-wagon-right hidden-xs hidden-sm">
+   <%= link_to "Currencies", currencies_path, class: "navbar-wagon-item navbar-wagon-link" %>
+   <%= link_to "Offers", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+   <%= link_to "Our Clients", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+   <% if user_signed_in? %>
 
-      <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+     <!-- Links when logged in -->
 
-      <!-- Avatar with dropdown menu -->
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fas fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fas fa-cog"></i>  <%= t(".settings", default: "Settings") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fas fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
-    <% else %>
-      <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <% end %>
-  </div>
+     <%= link_to "Create Wallet", wallets_create_path  , class: "navbar-wagon-item navbar-wagon-link" %>
 
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
-      </ul>
-    </div>
-  </div>
+     <%= link_to "Offers", '#' , class: "navbar-wagon-item navbar-wagon-link" %>
+     <%= link_to "Currencies", currencies_path , class: "navbar-wagon-item navbar-wagon-link" %>
+
+     <!-- Avatar with dropdown menu -->
+     <div class="navbar-wagon-item">
+       <div class="dropdown">
+         <%= image_tag "https://images-na.ssl-images-amazon.com/images/I/41-6KxWC-eL.jpg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+           <li>
+             <%= link_to "#" do %>
+               <i class="fas fa-user"></i> <%= t(".profile", default: "Profile") %>
+             <% end %>
+           </li>
+           <li>
+             <%= link_to "#" do %>
+               <i class="fas fa-cog"></i>  <%= t(".settings", default: "Settings") %>
+             <% end %>
+           </li>
+           <li>
+             <%= link_to destroy_user_session_path, method: :delete do %>
+               <i class="fas fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>
+             <% end %>
+           </li>
+         </ul>
+       </div>
+     </div>
+   <% else %>
+     <!-- Login link (when logged out) -->
+     <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+   <% end %>
+ </div>
+
+ <!-- Dropdown list appearing on mobile only -->
+ <div class="navbar-wagon-item hidden-md hidden-lg">
+   <div class="dropdown">
+     <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+     <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+       <li><a href="#">Some mobile link</a></li>
+       <li><a href="#">Other one</a></li>
+       <li><a href="#">Other one</a></li>
+     </ul>
+   </div>
+ </div>
 </div>
-

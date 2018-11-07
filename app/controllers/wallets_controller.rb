@@ -19,7 +19,7 @@ class WalletsController < ApplicationController
     @wallet.user = current_user
     authorize @wallet
     if @wallet.save
-      redirect_to [@wallet.user, @wallet]
+      redirect_to @wallet
     else
       render :new
     end
@@ -38,6 +38,10 @@ class WalletsController < ApplicationController
   end
 
   def destroy
+    wallet = Wallet.find(params[:id])
+    authorize wallet
+    wallet.destroy
+    redirect_to wallets_path
   end
 
   def wallet_params

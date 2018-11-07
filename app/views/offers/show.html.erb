@@ -1,2 +1,15 @@
-<h1>Offers#show</h1>
-<p>Find me in app/views/offers/show.html.erb</p>
+<div class="container">
+  <div class="offer-card">
+    <h2><i class="fas fa-money-bill-wave"></i> Price: $<%= @offer.price %></h2>
+    <h2><i class="fas fa-sort-amount-up"></i> Amount: <%= @offer.amount %></h2>
+    <%= link_to @offer.wallet.currency do %>
+      <h2><i class="fab fa-bitcoin"></i> Currency: <%= @offer.wallet.currency.name.upcase %></h2>
+    <% end %>
+    <% if @offer.user_type = "sell" %>
+      <%= link_to @offer.wallet.user do %>
+        <h2><i class="far fa-user"></i> Seller: <%= @offer.wallet.user.email %></h2>
+      <% end %>
+    <% end %>
+    <%= link_to "Back to Offers", offers_path %>
+  </div>
+</div>

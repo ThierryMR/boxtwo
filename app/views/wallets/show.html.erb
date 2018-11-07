@@ -3,3 +3,6 @@
   </div>
   <%= link_to "Back", wallets_path %>
   <%= link_to "Edit", edit_wallet_path %>
+  <%= link_to "Delete?", wallet_path(@wallet),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>

@@ -5,19 +5,18 @@ class WalletsController < ApplicationController
 
   def show
     @wallet = Wallet.find(params[:id])
-    @wallet.user = User.find(params[:user_id])
     authorize @wallet
   end
 
   def new
     @wallet = Wallet.new
-    @wallet.user = User.find(params[:user_id])
+    @wallet.user = current_user
     authorize @wallet
   end
 
   def create
     @wallet = Wallet.new(wallet_params)
-    @wallet.user = User.find(params[:user_id])
+    @wallet.user = current_user
     authorize @wallet
     if @wallet.save
       redirect_to [@wallet.user, @wallet]
@@ -27,9 +26,15 @@ class WalletsController < ApplicationController
   end
 
   def edit
+    @wallet = Wallet.find(params[:id])
+    authorize @wallet
   end
 
   def update
+    @wallet = Wallet.find(params[:id])
+    authorize @wallet
+    @wallet.update(wallet_params)
+    redirect_to @wallet
   end
 
   def destroy

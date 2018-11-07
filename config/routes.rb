@@ -18,11 +18,10 @@ Rails.application.routes.draw do
   get 'currencies/show'
   devise_for :users
   root to: 'pages#home'
-  resources :users, only: [:show] do #totally independent
+  resources :users, only: [:show] #totally independent
     # member do
-    resources :wallets #nested in users
+  resources :wallets #nested in users
     # end
-  end
   resources :currencies, only: [:index, :show] #totally independent
   resources :offers, only: [:show, :index] #MAYBE INDEPENDENT
   #resources :transactions Do transactions controller LATER.

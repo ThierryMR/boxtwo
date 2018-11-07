@@ -1,5 +1,5 @@
 <h1> Create Wallet </h1>
-<%= simple_form_for [@wallet.user, @wallet] do |f| %>
+<%= simple_form_for @wallet do |f| %>
     <%= f.input :amount %>
     <%= f.association :currency %>
   <%= f.submit "Create Wallet", class: "btn btn-primary" %>

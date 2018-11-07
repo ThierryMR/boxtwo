@@ -1,2 +1,6 @@
-<h1>Wallets#edit</h1>
-<p>Find me in app/views/wallets/edit.html.erb</p>
+<h1> Edit Wallet </h1>
+<%= simple_form_for @wallet do |f| %>
+    <%= f.input :amount %>
+    <%= f.association :currency %>
+  <%= f.submit "Edit Wallet", class: "btn btn-primary" %>
+  <% end %>

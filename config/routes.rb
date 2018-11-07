@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :users, only: [:show] #totally independent
-  resources :wallets
+  resources :wallets do
+    resources :offers, only: [:create]
+  end
+
+
   resources :currencies, only: [:index, :show] #totally independent
   resources :offers, only: [:show, :index] do
     resources :trades, only: [:create]

@@ -6,6 +6,8 @@ class OffersController < ApplicationController
   end
 
   def show
+    @offer = Offer.find(params[:id])
+    authorize @offer
   end
 
   def new
@@ -17,9 +19,11 @@ class OffersController < ApplicationController
   def create
     @offer = Offer.new(offer_params)
     @offer.wallet = Wallet.find(params[:wallet_id])
+    @offer.amount = @offer.wallet.amount
+    @offer.user_type = "sell"
     authorize @offer
     if @offer.save
-     redirect_to [@offer.wallet, @offer]
+     redirect_to offers_path
     else
       render :new
     end
@@ -35,6 +39,6 @@ class OffersController < ApplicationController
   end
 
   def offer_params
-    params.require(:offer).permit(:type, :price, :amount, :wallet_id, :transaction_id)
+    params.require(:offer).permit(:user_type, :price, :amount, :wallet_id, :transaction_id)
   end
 end

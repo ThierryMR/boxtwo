@@ -1,6 +1,13 @@
   <div class="wallet-show">
     <h1><%= @wallet.amount %> of <%= @wallet.currency.name %></h1>
   </div>
+
+
+  <%= simple_form_for([@wallet, @offer]) do |f| %>
+    <%= f.input :price %>
+    <%= f.submit %>
+  <% end %>
+
   <%= link_to "Back", wallets_path %>
   <%= link_to "Edit", edit_wallet_path %>
   <%= link_to "Delete?", wallet_path(@wallet),

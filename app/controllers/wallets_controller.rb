@@ -5,6 +5,7 @@ class WalletsController < ApplicationController
 
   def show
     @wallet = Wallet.find(params[:id])
+    @offer = @wallet.offers.new
     authorize @wallet
   end
 

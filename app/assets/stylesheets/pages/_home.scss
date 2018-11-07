@@ -1,1 +1,6 @@
 // Specific CSS for your home-page
+.cards {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}

@@ -7,9 +7,10 @@
  <!-- Right Navigation -->
  <div class="navbar-wagon-right hidden-xs hidden-sm">
    <%= link_to "Currencies", currencies_path, class: "navbar-wagon-item navbar-wagon-link" %>
-   <%= link_to "Offers", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+   <%= link_to "Offers", offers_path, class: "navbar-wagon-item navbar-wagon-link" %>
    <%= link_to "Our Clients", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-   <% if user_signed_in? %>
+
+    <% if user_signed_in? %>
 
      <!-- Links when logged in -->
 
@@ -43,7 +44,7 @@
      </div>
    <% else %>
      <!-- Login link (when logged out) -->
-     <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+     <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-default" %>
    <% end %>
  </div>
 

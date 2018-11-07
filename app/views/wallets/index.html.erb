@@ -1,6 +1,17 @@
-<h1>My Wallets <i class="fas fa-wallet"></i></h1>
-<% @wallets.each do |wallet| %>
-  <%= link_to [wallet.user, wallet] do %>
-    <h4><%= wallet.amount %> of <%= wallet.currency.name %></h4>
-  <% end %>
-<% end %>
+<h1 class="text-center">My Wallets <i class="fas fa-wallet"></i></h1>
+<div class="container">
+  <div class="row">
+    <% @wallets.each do |wallet| %>
+      <%= link_to wallet do %>
+      <div class="col-xs-3">
+        <div class="wallet">
+          <h4><%= wallet.amount %></h4>
+          <h4> <%= wallet.currency.name %></h4>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<%= link_to "Add Wallet", new_wallet_path %>
+

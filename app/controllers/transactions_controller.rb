@@ -1,22 +1,22 @@
-class TransactionsController < ApplicationController
+class TradesController < ApplicationController
+
   def index
-    @transactions = policy_scope(Transaction)
+    @trade = policy_scope(Trade)
   end
 
   def new
-    @transaction = Transaction.new
-    authorize @transaction
+    @trade = Trade.new
+    authorize @trade
   end
 
   def create
-    @transaction = Transaction.new(transaction_params)
-    authorize @transaction
-    @transaction.save
-    redirect_to transactions_path
+    @trade = Trade.new(trade_params)
+    authorize @trade
+    @trade.save
+    redirect_to trade_path
   end
 
-  def transaction_params
-    params.require(:transaction).permit(:status, :user_id, :offer_id)
+  def trade_params
+    params.require(:trade).permit(:status, :user_id, :offer_id)
   end
 end
-

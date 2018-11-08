@@ -7,4 +7,7 @@ class PagesController < ApplicationController
     @currency = Currency.new
     @currency_names = Currency.select(:name)
   end
+
+  def clients
+  end
 end

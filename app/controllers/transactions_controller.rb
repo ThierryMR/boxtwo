@@ -1,2 +1,2 @@
-class TransactionsController < ApplicationController
+class TradesController < ApplicationController
 end

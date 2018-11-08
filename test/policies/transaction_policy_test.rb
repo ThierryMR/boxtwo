@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TransactionPolicyTest < ActiveSupport::TestCase
+class TradePolicyTest < ActiveSupport::TestCase
   def test_scope
   end
 

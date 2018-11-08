@@ -1,6 +1,7 @@
 class WalletsController < ApplicationController
   def index
     @wallets = policy_scope(Wallet.where(user: current_user))
+    @currencies = Currency.all
   end
 
   def show

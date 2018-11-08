@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  get "/clients", to: 'pages#clients'
   resources :users, only: [:show] #totally independent
   resources :wallets do
     resources :offers, only: [:create]

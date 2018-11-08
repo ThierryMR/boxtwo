@@ -4,4 +4,7 @@ class PagesController < ApplicationController
   def home
     @currencies = Currency.all
   end
+
+  def clients
+  end
 end

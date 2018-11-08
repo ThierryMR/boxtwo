@@ -2,19 +2,9 @@
   <div class="banner-content">
     <h1>BOX TWO</h1>
     <p>The best way to trade criptocurrency directly between owners (P2P).</p>
-<%= simple_form_for @offer, :method => :get do |f| %>
-    <%= f.input :wallet_id, collection: @currency_names %>
-    <%= f.submit "Search", class: "btn btn-primary" %>
-  <% end %>
-  <!-- form class="form-inline" action="">
-
-
-      <div class="form-group">
-        <input type="text" class="form-control input-lg" placeholder="Search for...">
-        <button class="btn btn-success btn-lg" type="submit">Go!</button>
-      </div>
-
-    </form> -->
+    <%= form_tag offers_path, method: :get, class: "" do %>
+      <%= select_tag "currency", options_from_collection_for_select(@currencies, "id", "name"), class: "form-control select optional", :onchange => "this.form.submit();" %>
+    <% end %>
   </div>
 </div>
 

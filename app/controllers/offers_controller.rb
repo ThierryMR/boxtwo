@@ -12,32 +12,31 @@ class OffersController < ApplicationController
     authorize @offer
   end
 
-  def new
-    @offer = Offer.new
-    @offer.wallet = Wallet.find(params[:wallet_id])
-    authorize @offer
-  end
-
   def create
+    @wallet = Wallet.find(params[:wallet_id])
     @offer = Offer.new(offer_params)
-    @offer.wallet = Wallet.find(params[:wallet_id])
-    @offer.amount = @offer.wallet.amount
-    @offer.user_type = "sell"
+    if @offer.amount <= @wallet.amount
+      @wallet.amount -= @offer.amount
+      @offer.wallet = @wallet
+      @offer.user_type = "sell"
+      @wallet.save
+    end
     authorize @offer
     if @offer.save
-     redirect_to offers_path
+      redirect_to @offer
     else
-      render :new
+      redirect_to @wallet
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
+    offer = Offer.find(params[:id])
+    wallet = Wallet.find(offer.wallet_id)
+    wallet.amount += offer.amount
+    wallet.save
+    authorize offer
+    offer.destroy
+    redirect_to offers_path
   end
 
   def offer_params

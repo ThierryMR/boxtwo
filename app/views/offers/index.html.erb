@@ -7,9 +7,9 @@
       <%= link_to offer do %>
         <div class="col-xs-3">
           <div class="offer">
-            <%= offer.amount %> <%= offer.wallet.currency.name.upcase %>
+            <%= number_with_precision(offer.amount, presicion: 5, significant: true, strip_insignificant_zeros: true, delimiter: ",") %> <%= offer.wallet.currency.name.upcase %>
             <div class="offer-price">
-              $<%= offer.price %>
+              <%= number_to_currency(offer.price) %>
             </div>
           </div>
         </div>

@@ -1,5 +1,7 @@
   <div class="wallet-show">
-    <h1><%= @wallet.amount %> of <%= @wallet.currency.name %></h1>
+    <h1><%= @wallet.amount %> of <%= link_to @wallet.currency do %>
+      <%= @wallet.currency.name %></h1>
+    <% end %>
   </div>
 
 

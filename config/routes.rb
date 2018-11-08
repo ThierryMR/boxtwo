@@ -6,10 +6,10 @@ Rails.application.routes.draw do
     resources :offers, only: [:create]
   end
 
-
+  resources :trades, only: [:index, :create]
   resources :currencies, only: [:index, :show] #totally independent
   resources :offers, only: [:show, :index] do
-    resources :trades, only: [:create]
+    resources :trades, only: [:new, :create]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

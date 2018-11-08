@@ -10,6 +10,13 @@
         <h2><i class="far fa-user"></i> Seller: <%= @offer.wallet.user.email %></h2>
       <% end %>
     <% end %>
-    <%= link_to "Back to Offers", offers_path %>
+    <% if @offer.wallet.user != current_user %>
+      <%= link_to new_offer_transaction_path(@offer) do %>
+        <div class="btn btn-success">
+          BUY <!--  colocar um simple form para submit e criar o tal transaction -->
+        </div>
+      <% end %>
+    <% end %>
+      <%= link_to "Back to Offers", offers_path %>
   </div>
 </div>

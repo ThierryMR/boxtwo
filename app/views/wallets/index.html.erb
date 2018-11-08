@@ -7,6 +7,8 @@
         <div class="wallet">
           <h4><%= wallet.amount %></h4>
           <h4> <%= wallet.currency.name %></h4>
+          <h5> Wallet Value</h5>
+          <h5> <%=number_to_currency(wallet.currency.current_price * wallet.amount, precision: 2, delimiter: ',') %></h5>
         </div>
       </div>
       <% end %>
@@ -14,4 +16,3 @@
   </div>
 </div>
 <%= link_to "Add Wallet", new_wallet_path %>
-

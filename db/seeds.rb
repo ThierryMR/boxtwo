@@ -9,7 +9,7 @@ require "open-uri"
 require 'json'
 
 # url = 'https://api.coinmarketcap.com/v2/ticker/'
-url = 'https://api.coinmarketcap.com/v2/ticker/?limit=10'
+url = 'https://api.coinmarketcap.com/v2/ticker/?limit=12'
 read = open(url).read
 hash = JSON.parse(read)
 # p hash

@@ -53,18 +53,19 @@
       </select>
     </div>
 
+
     <div id='widget-cards' data-currencies="<%= @currencies.to_json %>">
       <% @currencies.map do |currency| %>
-        <div class="col-xs-6 col-sm-4 col-md-3" data-symbol="<%= currency.symbol %>">
+        <div class="col-xs-12 col-sm-6 col-md-3">
           <div class="row">
             <script id="<%= currency.symbol %>"></script>
           </div>
         </div>
       <% end %>
     </div>
-    <%= javascript_pack_tag "widget" %>
   </div>
 </div>
+<%= javascript_pack_tag "widget" %>
 
 <div class="text-center padded" id="newsletter">
   <h2>Get news from us</h2>

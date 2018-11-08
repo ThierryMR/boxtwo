@@ -1,5 +1,5 @@
 class Wallet < ApplicationRecord
   belongs_to :user
   belongs_to :currency
-  has_many :offers
+  has_many :offers, dependent: :destroy
 end

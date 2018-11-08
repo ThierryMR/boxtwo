@@ -3,5 +3,11 @@ class PagesController < ApplicationController
 
   def home
     @currencies = Currency.all
+    @offer = Offer.new
+    @currency = Currency.new
+    @currency_names = Currency.select(:name)
+  end
+
+  def clients
   end
 end

@@ -7,6 +7,8 @@ class OffersController < ApplicationController
 
   def show
     @offer = Offer.find(params[:id])
+    # @transaction = @offer.trade.new
+    # @transaction.status = "sell"
     authorize @offer
   end
 

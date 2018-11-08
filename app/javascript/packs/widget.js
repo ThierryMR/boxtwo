@@ -1,6 +1,7 @@
 function action(currencies) {
+  baseUrl = "https://widgets.cryptocompare.com/";
   var scripts = document.getElementsByTagName("script");
-
+  var period = document.getElementById("period");
   console.log(period.value);
   currencies.forEach((currency) => {
     var embedder = scripts[currency.symbol];
@@ -15,9 +16,7 @@ function action(currencies) {
       embedder.parentNode.appendChild(s);
     })();
   });
-};
-
-baseUrl = "https://widgets.cryptocompare.com/";
+}
 
 // var scripts = document.getElementsByTagName("script");
 const widgetCards = document.getElementById("widget-cards")
@@ -30,7 +29,7 @@ var period = document.getElementById("period");
 console.log(period);
 
 // action(currencies);
-period.addEventListener("change", action(currencies));
+period.addEventListener('change', action(currencies));
 
 
 

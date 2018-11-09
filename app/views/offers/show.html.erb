@@ -10,19 +10,15 @@
         <h2><i class="far fa-user"></i> Seller: <%= @offer.wallet.user.email %></h2>
       <% end %>
     <% end %>
-    <% if @offer.wallet.user != current_user %>
-      <%= link_to new_offer_transaction_path(@offer) do %>
-        <div class="btn btn-success">
-          BUY <!--  colocar um simple form para submit e criar o tal transaction -->
-        </div>
-      <% end %>
-    <% end %>
+
       <%= link_to "Back to Offers", offers_path %>
       <%= link_to "Delete?", offer_path(@offer),
       method: :delete,
       data: { confirm: "Are you sure?" } %>
-      <%= simple_form_for([@offer, @trade]) do |f| %>
-          <%= f.submit %>
+      <% if @offer.wallet.user != current_user %>
+        <%= simple_form_for([@offer, @trade]) do |f| %>
+            <%= f.submit %>
+        <% end %>
       <% end %>
   </div>
 </div>

@@ -3,5 +3,5 @@ class Wallet < ApplicationRecord
   belongs_to :currency
 
   has_many :offers, dependent: :destroy
-  validates :currency_id, uniqueness: true
+  validates_uniqueness_of :currency_id, :scope => :user_id
 end

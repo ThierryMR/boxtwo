@@ -3,7 +3,7 @@
 
   <h2 class="text-center"> SOLD </h2>
   <div class="row">
-    <% @trades.each do |trade| %>
+    <% @sell_trades.each do |trade| %>
       <%= link_to [trade.offer, trade] do %>
         <div class="col-xs-3">
           <div class="offer">
@@ -16,4 +16,21 @@
       <% end %>
     <% end %>
   </div>
+
+  <h2 class="text-center"> BOUGHT </h2>
+  <div class="row">
+    <% @buy_trades.each do |trade| %>
+      <%= link_to [trade.offer, trade] do %>
+        <div class="col-xs-3">
+          <div class="offer">
+            <%= number_with_precision(trade.offer.amount, presicion: 5, significant: true, strip_insignificant_zeros: true, delimiter: ",") %> <%= trade.offer.wallet.currency.name.upcase %>
+            <div class="offer-price">
+              <%= number_to_currency(trade.offer.price) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
 </div>

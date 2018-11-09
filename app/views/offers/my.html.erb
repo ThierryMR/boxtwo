@@ -10,6 +10,14 @@
             <div class="offer-price">
               <%= number_to_currency(offer.price) %>
             </div>
+            <div class="offer-price">
+              <% if offer.closed %>
+                Closed
+              <% else %>
+                Open
+              <% end %>
+            </div>
+
           </div>
         </div>
       <% end %>

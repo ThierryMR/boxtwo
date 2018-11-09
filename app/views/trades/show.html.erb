@@ -4,7 +4,7 @@
     <div class="card-description">
      <p>Vendedor: <%= @trade.offer.wallet.user.email %></p>
      <p>Comprador: <%= current_user.email %></p>
-     <p>Price: <%= @trade.offer.price %></p>
-     <p>Amount: <%= @trade.offer.amount %></p>
+     <p>Price: <%= number_to_currency(@trade.offer.price) %></p>
+     <p>Amount: <%= number_with_precision(@trade.offer.amount, presicion: 5, significant: true, strip_insignificant_zeros: true, delimiter: ",") %></p>
   </div>
 </div>

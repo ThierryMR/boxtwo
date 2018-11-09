@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     resources :offers, only: [:create]
   end
 
-  resources :currencies, only: [:index, :show] #totally independent
+  resources :currencies, only: [:index, :show] do
+    post 'refresh', on: :collection
+  end
   resources :offers, only: [:show, :index, :destroy] do
     resources :trades, only: [:new, :create, :index, :show]
   end

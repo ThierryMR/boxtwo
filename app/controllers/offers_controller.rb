@@ -18,6 +18,15 @@ class OffersController < ApplicationController
     end
   end
 
+  def my
+    @offers = policy_scope(Offer)
+    @offers = @offers.select do |offer|
+      authorize offer
+      offer.wallet.user == current_user
+    end
+
+  end
+
   def show
     @offer = Offer.find(params[:id])
     @trade = Trade.new

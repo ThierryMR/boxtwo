@@ -34,6 +34,10 @@ class ApplicationPolicy
     true
   end
 
+  def my?
+    true
+  end
+
   class Scope
     attr_reader :user, :scope
 

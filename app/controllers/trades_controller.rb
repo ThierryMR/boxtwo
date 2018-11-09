@@ -3,19 +3,28 @@ class TradesController < ApplicationController
     @trade = policy_scope(Trade)
   end
 
-  def new
+  def create
+    @offer = Offer.find(params[:offer_id])
     @trade = Trade.new
+    @trade.offer = @offer
+    @trade.user = current_user
+    authorize @trade
+    if @trade.save
+      redirect_to [@offer, @trade]
+    else
+      redirect_to @offer
+    end
+  end
+
+  def show
+    @trade = Trade.find(params[:id])
     authorize @trade
   end
 
-  def create
-    @trade = Trade.new(trade_params)
-    authorize @trade
-    @trade.save
-    redirect_to trade_path
+  def index
   end
 
   def trade_params
-    params.require(:trade).permit(:status, :user_id, :offer_id)
+    params.require(:trade).permit(:offer_id)
   end
 end

@@ -2,19 +2,13 @@ class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params[:currency_query].nil? && params[:user_query].nil?
+    if params[:currency_query].nil?
       @offers = policy_scope(Offer)
-    elsif params[:user_query].nil?
-      @offers = policy_scope(Offer)
-      @offers = @offers.select do |offer|
-        offer.wallet.currency.name == params[:currency_query]
-      end
     else
       @offers = policy_scope(Offer)
       @offers = @offers.select do |offer|
-        offer.wallet.user_id == params[:user_query]
+        offer.wallet.currency.name.downcase == params[:currency_query].downcase
       end
-
     end
   end
 

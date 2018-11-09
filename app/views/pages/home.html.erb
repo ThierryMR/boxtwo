@@ -2,8 +2,10 @@
   <div class="banner-content">
     <h1>BOX TWO</h1>
     <p>The best way to trade criptocurrency directly between owners (P2P).</p>
-    <%= form_tag offers_path, method: :get, class: "" do %>
-      <%= select_tag "currency", options_from_collection_for_select(@currencies, "id", "name"), class: "form-control select optional", :onchange => "this.form.submit();" %>
+    <%= form_tag offers_path, method: :get do %>
+       <%#= select_tag "currency", options_from_collection_for_select(@currencies, "id", "name"), class: "form-control select optional", :onchange => "this.form.submit();" %>
+       <%= text_field_tag :currency_query, params[:currency_query], class: "form-control",
+       placeholder: "Currency" %>
     <% end %>
   </div>
 </div>

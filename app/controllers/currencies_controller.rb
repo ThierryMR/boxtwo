@@ -3,6 +3,7 @@ class CurrenciesController < ApplicationController
 
   def index
     @currencies = policy_scope(Currency)
+    @currencies = @currencies.order(id: :asc)
   end
 
   def show

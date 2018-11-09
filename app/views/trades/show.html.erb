@@ -2,6 +2,8 @@
 <div class="container">
 
   <div class="offer-card">
+    <h1>Current User #: <%= @current_user.email  %></h1>
+    <br>
     <h1>Vendedor #: <%= @trade.offer.wallet.user_id %></h1>
     <br>
     <h1>Comprador #: <%= @trade.user_id %></h1>

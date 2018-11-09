@@ -33,7 +33,20 @@ class TradesController < ApplicationController
 
   def show
     @trade = Trade.find(params[:id])
+    @offer = Offer.find(@trade.offer_id)
     authorize @trade
+  end
+
+  def my_trades
+    @trades = policy_scope(Trade)
+    unless @trades.empty?
+      @trades = @trades.select do |trade|
+        authorize trade
+        trade.offer.wallet.user == current_user
+      end
+    else
+      authorize @trades
+    end
   end
 
   def index

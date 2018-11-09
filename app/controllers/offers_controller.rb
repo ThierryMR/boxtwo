@@ -7,7 +7,7 @@ class OffersController < ApplicationController
     else
       @offers = policy_scope(Offer)
       @offers = @offers.select do |offer|
-        offer.wallet.currency.name.downcase == params[:currency_query].downcase && offer.closed == false
+        offer.wallet.currency.name.downcase.include?(params[:currency_query].downcase) && offer.closed == false
       end
     end
   end

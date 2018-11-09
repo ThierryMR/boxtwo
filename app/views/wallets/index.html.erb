@@ -1,22 +1,24 @@
-<div class="text-center inline-list">
-  <h1>My Wallets <i class="fas fa-wallet"></i></h1>
-
-  <h2><%= link_to "Add Wallet", new_wallet_path %></h2>
-</div>
-
 <div class="container">
-  <div class="row">
-    <% @wallets.each do |wallet| %>
+  <div class="text-center inline-list">
+    <h1>My Wallets <i class="fas fa-wallet"></i></h1>
+
+    <h2><%= link_to "Add Wallet", new_wallet_path %></h2>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <% @wallets.each do |wallet| %>
       <%= link_to wallet do %>
       <div class="col-xs-3">
         <div class="wallet">
           <h4><%= wallet.amount %></h4>
           <h4> <%= wallet.currency.name %></h4>
-          <h5> Wallet Value</h5>
+          <h5>Wallet Value</h5>
           <h5> <%=number_to_currency(wallet.currency.current_price * wallet.amount, precision: 2, delimiter: ',') %></h5>
         </div>
       </div>
       <% end %>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

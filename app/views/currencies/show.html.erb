@@ -1,17 +1,58 @@
-<h1>Currencies#show</h1>
-<p>Find me in app/views/currencies/show.html.erb</p>
+<div class="container">
+  <h1 class="text-center"><%= @currency.name %></h1>
 
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          Price
+        </td>
+        <td>
+          <%= number_to_currency(@currency.current_price, :precision => 2) %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          24h Volume
+        </td>
+        <td>
+          <%= number_with_precision(@currency.volume_24h, precision: 0, delimiter: ",")  %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Circulating Supply
+        </td>
+        <td>
+          <%=number_with_precision(@currency.circulating_supply, precision: 0, delimiter: ",")  %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Maximum Supply
+        </td>
+        <td>
+          <%=number_with_precision(@currency.max_supply, precision: 0, delimiter: ",")  %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="form-group">
+    <label for="sel1">View period</label>
+    <select class="form-control" id="period">
+      <option value="1D">1 Day</option>
+      <option value="1W">1 Week</option>
+      <option value="2W">2 Weeks</option>
+      <option value="1M">1 Month</option>
+      <option value="3M">3 Months</option>
+      <option value="6M">6 Months</option>
+      <option value="1Y">1 Year</option>
+    </select>
+  </div>
 
-<ol>
-  <li> <%= @currency.name %></li>
-  <li>price:<%= number_to_currency(@currency.current_price, :precision => 2)  %></li>
-  <li>volume_24h:<%= number_with_precision(@currency.volume_24h, precision: 0, delimiter: ",")  %></li>
-  <li>circulating_supply <%=number_with_precision(@currency.circulating_supply, precision: 0, delimiter: ",")  %> </li>
-  <li>max_supply: <%=number_with_precision(@currency.max_supply, precision: 0, delimiter: ",")  %></li>
+  <div id="widget-cards" data-currency="<%= @currency.symbol.to_json %>">
+    <script id="<%= @currency.symbol %>"></script>
+  </div>
+  <%= javascript_pack_tag "single_widget" %>
 
-<a href="www.google.com">hahuahuauh</a>
-
-<p>Bitcoin cash eh um fork do bitcoin que foi feito a 2anos atraz e tem mais ou menos as mesmas funcionalidades</p>
-
-
-</ol>
+</div>

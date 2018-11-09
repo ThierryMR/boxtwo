@@ -5,6 +5,8 @@ class TradesController < ApplicationController
 
   def create
     @offer = Offer.find(params[:offer_id])
+    @offer.closed = true
+    @offer.save
     @trade = Trade.new
     @trade.offer = @offer
     @trade.user = current_user

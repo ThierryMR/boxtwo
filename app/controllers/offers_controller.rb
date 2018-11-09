@@ -3,20 +3,24 @@ class OffersController < ApplicationController
 
   def index
     if params[:currency_query].nil?
-      @offers = policy_scope(Offer)
+      @offers = policy_scope(Offer).where(closed: false)
     else
       @offers = policy_scope(Offer)
       @offers = @offers.select do |offer|
-        offer.wallet.currency.name.downcase == params[:currency_query].downcase
+        offer.wallet.currency.name.downcase == params[:currency_query].downcase && offer.closed == false
       end
     end
   end
 
   def my
     @offers = policy_scope(Offer)
-    @offers = @offers.select do |offer|
-      authorize offer
-      offer.wallet.user == current_user
+    unless @offers.empty?
+      @offers = @offers.select do |offer|
+        authorize offer
+        offer.wallet.user == current_user
+      end
+    else
+      authorize @offers
     end
 
   end

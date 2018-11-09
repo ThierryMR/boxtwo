@@ -12,13 +12,14 @@
     <% end %>
 
       <%= link_to "Back to Offers", offers_path %>
-      <%= link_to "Delete?", offer_path(@offer),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %>
       <% if @offer.wallet.user != current_user %>
         <%= simple_form_for([@offer, @trade]) do |f| %>
             <%= f.submit %>
         <% end %>
+      <% else %>
+        <%= link_to "Delete?", offer_path(@offer),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
       <% end %>
   </div>
 </div>

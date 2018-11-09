@@ -53,15 +53,7 @@ class TradesController < ApplicationController
       authorize @trades
     end
   end
-  def my_boughts
-    @trades = policy_scope(Trade)
-    unless @trades.empty?
-      @trades = @trades.select do |trade|
-        @authorize trade
-      else
-        trade.offer.wallet.user == current_user
-      end
-  end
+
 
   def index
   end

@@ -1,4 +1,5 @@
-<div class="banner" style="background: url('/assets/bitcoin-island.jpg');">
+<div class="banner">
+<%#=image_tag "bitcoin-island.jpg" class: "banner"  %>
   <div class="banner-content">
     <h1>BOX TWO</h1>
     <p>The best way to trade criptocurrency directly between owners (P2P).</p>
@@ -13,22 +14,22 @@
 <div class="container text-center padded features">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-3">
-      <img src="/assets/wallet.jpg" class="card"/>
+      <%= image_tag "wallet.jpg", class: 'card' %>
       <h2>Create your own Wallet</h2>
       <p>Create a user to generate a unique wallet.</p>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
-      <img src="/assets/coins.png" width="300" height="300" class="card"/>
+      <%= image_tag "coins.png", class: "card"  %>
       <h2>Select your cryptocurrency</h2>
       <p>Choose your cryptocurrency and define what you doing with her.</p>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
-      <img src="/assets/bitcoin.jpg" width="300" height="300" class="card"/>
+      <%= image_tag "bitcoin.jpg", class: "card"  %>
       <h2>Buy and sell</h2>
       <p>Select your cryptocurrency and buy our sell.</p>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
-      <img src="/assets/love.png" class="card"/>
+      <%= image_tag "love.png", class: "card"  %>
       <h2>Share and love</h2>
       <p>Join a community you will love.</p>
     </div>

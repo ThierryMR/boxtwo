@@ -22,7 +22,6 @@ class OffersController < ApplicationController
     else
       authorize @offers
     end
-
   end
 
   def show

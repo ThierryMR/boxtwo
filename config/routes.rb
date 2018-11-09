@@ -14,5 +14,6 @@ Rails.application.routes.draw do
     resources :trades, only: [:new, :create, :index, :show]
   end
   get "/my", to: 'offers#my'
+  get "/my_trades", to: 'trades#my_trades'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

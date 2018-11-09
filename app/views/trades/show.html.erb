@@ -4,8 +4,8 @@
 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://cdn.shopify.com/s/files/1/1448/0474/products/BIG_Midnight_Black__50111_grande.jpg');">
   <div class="card-category">Coin: <%= @trade.offer.wallet.currency.name %></div>
   <div class="card-description">
-    <p>Vendedor: <%= @trade.offer.wallet.user_id %></p>
-    <p>Comprador: <%= @trade.user_id %></p>
+    <p>Vendedor: <%= @trade.offer.wallet.user.email %></p>
+    <p>Comprador: <%= current_user.email %></p>
     <p>Price: <%= @trade.offer.price %></p>
     <p>Amount: <%= @trade.offer.amount %></p>
 </div>

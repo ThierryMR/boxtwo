@@ -40,9 +40,14 @@ class TradesController < ApplicationController
   def my_trades
     @trades = policy_scope(Trade)
     unless @trades.empty?
-      @trades = @trades.select do |trade|
+      @sell_trades = @trades.select do |trade|
         authorize trade
         trade.offer.wallet.user == current_user
+      end
+
+      @buy_trades = @trades.select do |trade|
+        authorize trade
+        trade.user == current_user
       end
     else
       authorize @trades

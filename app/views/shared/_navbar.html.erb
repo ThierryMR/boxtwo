@@ -8,13 +8,13 @@
  <div class="navbar-wagon-right hidden-xs hidden-sm">
    <%= link_to "Currencies", currencies_path, class: "navbar-wagon-item navbar-wagon-link" %>
    <%= link_to "Offers", offers_path, class: "navbar-wagon-item navbar-wagon-link" %>
-   <%= link_to "My Offers", my_path, class: "navbar-wagon-item navbar-wagon-link" %>
    <%= link_to "Our Clients", clients_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
    <% if user_signed_in? %>
 
    <!-- Links when logged in -->
    <%= link_to "My Wallets", wallets_path  , class: "navbar-wagon-item navbar-wagon-link" %>
+   <%= link_to "My Offers", my_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
    <!-- Avatar with dropdown menu -->
    <div class="navbar-wagon-item">
@@ -42,6 +42,7 @@
    <% else %>
    <!-- Login link (when logged out) -->
    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-default" %>
+   <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-default" %>
    <% end %>
  </div>
 

@@ -1,5 +1,5 @@
 class TradesController < ApplicationController
-    def index
+  def index
     @trade = policy_scope(Trade)
   end
 
@@ -8,6 +8,19 @@ class TradesController < ApplicationController
     @trade = Trade.new
     @trade.offer = @offer
     @trade.user = current_user
+
+    @wallet = Wallet.where(user: current_user, currency: @trade.offer.wallet.currency).first
+    if @wallet.nil?
+      @wallet = Wallet.new
+      @wallet.currency = @trade.offer.wallet.currency
+      @wallet.amount = @trade.offer.amount
+      @wallet.user = current_user
+      @wallet.save
+    else
+      @wallet.amount += @trade.offer.amount
+      @wallet.save
+    end
+
     authorize @trade
     if @trade.save
       redirect_to [@offer, @trade]

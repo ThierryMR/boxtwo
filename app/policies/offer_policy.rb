@@ -4,4 +4,8 @@ class OfferPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def my?
+    true
+  end
 end

@@ -21,5 +21,8 @@
       <%= link_to "Delete?", offer_path(@offer),
       method: :delete,
       data: { confirm: "Are you sure?" } %>
+      <%= simple_form_for([@offer, @trade]) do |f| %>
+          <%= f.submit %>
+      <% end %>
   </div>
 </div>
